@@ -41,9 +41,3 @@ class MobileSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         email = f"{validated_data.get('mobile')}@example.com" 
         CustomUser.objects.create(email=email,  mobile=validated_data.get('mobile'))
-
-# class EventSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = Event
-#         fields = ['name', 'date', 'location', 'description']
-  

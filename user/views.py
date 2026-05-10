@@ -9,6 +9,7 @@ from .serializers import CustomUserSerializer, MobileSerializer
 from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework.viewsets import ModelViewSet
 from rest_framework.permissions import IsAuthenticated
+from user.models import CustomUser
 
 class SignInView(APIView):
     def post(self, request):
@@ -24,11 +25,6 @@ class SignInView(APIView):
             return Response({**created_user.data, 'message': 'User created successfully'}, status=status.HTTP_201_CREATED)
         return Response(created_user.errors, status=status.HTTP_400_BAD_REQUEST)
 
-
-# class EventViewSet(ModelViewSet):
-#     permission_classes = [IsAuthenticated]
-#     queryset = Event.objects.all()
-#     serializer_class = EventSerializer
 
 class ProfileView(ModelViewSet):
     permission_classes = [IsAuthenticated]
